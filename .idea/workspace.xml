@@ -1,7 +1,362 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a5fbd7de-1bfb-4b79-bdac-dd068dddfe1f" name="Default Changelist" comment="" />
+    <list default="true" id="a5fbd7de-1bfb-4b79-bdac-dd068dddfe1f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.github/config.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/release-drafter.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/codecov.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/eog_100hz.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/eogdb/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/fantasia/download_fantasia.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/gudb/download_gudb.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/ludb/download_ludb.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/mit_arrhythmia/download_mit_arrhythmia.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/mit_normal/download_mit_normal.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/mit_nst/download_mit_nst.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/ptb_xl/download_ptbxl.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/rs_eeg_texas/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/examples/eog.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/examples/fit_function.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/examples/hrv.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/readme/README_decomposition.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/readme/README_delineate.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/readme/README_eog.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/readme/README_ppg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/readme/README_psd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/studies/ecg_preprocessing.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/studies/eog_blinktemplate.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/studies/erp_gam.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/studies/hrv_structure.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/studies/index.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/benchmark/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/benchmark/benchmark_ecg.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/benchmark/benchmark_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/complexity/transition_matrix.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/eda/eda_sympathetic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/eeg/eeg_badchannels.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/eeg/eeg_diss.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/eeg/eeg_gfp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/eeg/eeg_rereference.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/eeg/mne_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/eeg/mne_to_df.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/eog/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/eog/eog_analyze.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/eog/eog_clean.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/eog/eog_eventrelated.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/eog/eog_features.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/eog/eog_findpeaks.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/eog/eog_intervalrelated.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/eog/eog_plot.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/eog/eog_process.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/eog/eog_simulate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/epochs/epochs_to_array.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/microstates/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/microstates/microstates_classify.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/microstates/microstates_clean.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/microstates/microstates_complexity.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/microstates/microstates_dynamic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/microstates/microstates_findnumber.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/microstates/microstates_peaks.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/microstates/microstates_plot.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/microstates/microstates_segment.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/microstates/microstates_static.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/misc/find_consecutive.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/misc/find_groups.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/misc/replace.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/misc/warnings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/ppg/ppg_plot.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/ppg/ppg_process.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/rsp/rsp_rate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/signal/signal_recompose.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/signal/signal_timefrequency.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/stats/cluster.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/stats/cluster_findnumber.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neurokit2/stats/cluster_quality.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paper/figures/figure.pptx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paper/figures/nk_architecture.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paper/figures/nk_architecture.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paper/figures/nk_architecture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paper/figures/nk_architecture.tif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paper/make_figures.R" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paper/manuscript_v4.Rmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paper/manuscript_v4.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/ecg_preprocessing/README.Rmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/ecg_preprocessing/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/ecg_preprocessing/bibliography.bib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/ecg_preprocessing/data_detectors.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/ecg_preprocessing/data_normalization.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/ecg_preprocessing/figures/unnamed-chunk-10-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/ecg_preprocessing/figures/unnamed-chunk-11-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/ecg_preprocessing/figures/unnamed-chunk-15-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/ecg_preprocessing/figures/unnamed-chunk-16-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/ecg_preprocessing/figures/unnamed-chunk-6-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/ecg_preprocessing/figures/unnamed-chunk-7-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/ecg_preprocessing/figures/unnamed-chunk-8-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/ecg_preprocessing/figures/unnamed-chunk-9-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/ecg_preprocessing/make_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/ecg_preprocessing/utils/apa.csl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/eog_blinktemplate/README.Rmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/eog_blinktemplate/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/eog_blinktemplate/bibliography.bib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/eog_blinktemplate/figures/fig1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/eog_blinktemplate/figures/fig2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/eog_blinktemplate/figures/fig3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/eog_blinktemplate/figures/fig4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/eog_blinktemplate/figures/fig5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/eog_blinktemplate/utils/apa.csl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/README.Rmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/bibliography.bib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/figures/fig1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/figures/fig2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/figures/unnamed-chunk-10-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/figures/unnamed-chunk-11-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/figures/unnamed-chunk-12-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/figures/unnamed-chunk-13-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/figures/unnamed-chunk-14-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/figures/unnamed-chunk-15-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/figures/unnamed-chunk-16-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/figures/unnamed-chunk-5-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/figures/unnamed-chunk-6-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/figures/unnamed-chunk-7-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/figures/unnamed-chunk-8-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/figures/unnamed-chunk-9-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/script.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/erp_gam/utils/apa.csl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/hrv_frequency/make_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/hrv_structure/README.Rmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/hrv_structure/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/hrv_structure/bibliography.bib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/hrv_structure/data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/hrv_structure/figures/unnamed-chunk-10-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/hrv_structure/figures/unnamed-chunk-11-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/hrv_structure/figures/unnamed-chunk-4-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/hrv_structure/figures/unnamed-chunk-5-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/hrv_structure/figures/unnamed-chunk-6-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/hrv_structure/figures/unnamed-chunk-7-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/hrv_structure/figures/unnamed-chunk-8-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/hrv_structure/figures/unnamed-chunk-9-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/hrv_structure/make_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/hrv_structure/utils/apa.csl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studies/microstates_howmany/script.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/tests_eog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/tests_microstates.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.binder/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/.binder/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.codeclimate.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.codeclimate.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.coveragerc" beforeDir="false" afterPath="$PROJECT_DIR$/.coveragerc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/CODE_OF_CONDUCT.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/CODE_OF_CONDUCT.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/CONTRIBUTING.rst" beforeDir="false" afterPath="$PROJECT_DIR$/.github/CONTRIBUTING.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/bug_report.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/bug_report.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/PULL_REQUEST_TEMPLATE.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/PULL_REQUEST_TEMPLATE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/release-drafter-config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/release-drafter-config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/PyPI.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/releasePR.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/checks.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/checks.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/graphs.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/style.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/style.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/tests.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/tests.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AUTHORS.rst" beforeDir="false" afterPath="$PROJECT_DIR$/AUTHORS.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.rst" beforeDir="false" afterPath="$PROJECT_DIR$/README.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ecg_1000hz.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ecg_1000hz.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ecg_3000hz.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ecg_3000hz.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/docs/conf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/contributing/first_contribution.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/contributing/first_contribution.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/environment.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/environment.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/examples/custom.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/docs/examples/custom.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/examples/ecg_delineate.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/docs/examples/ecg_delineate.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/examples/eda.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/docs/examples/eda.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/examples/edr.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/docs/examples/edr.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/examples/epochs_create.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/docs/examples/epochs_create.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/examples/eventrelated.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/docs/examples/eventrelated.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/examples/heartbeats.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/docs/examples/heartbeats.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/examples/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/examples/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/examples/intervalrelated.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/docs/examples/intervalrelated.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/examples/rrv.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/docs/examples/rrv.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/examples/simulation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/docs/examples/simulation.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/functions.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/functions.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/readme/README_complexity_optimize.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/readme/README_complexity_optimize.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/readme/README_ecg.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/readme/README_ecg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/readme/README_eda.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/readme/README_eda.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/readme/README_emg.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/readme/README_emg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/readme/README_examples.py" beforeDir="false" afterPath="$PROJECT_DIR$/docs/readme/README_examples.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/readme/README_hdi.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/readme/README_hdi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/readme/README_hrv.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/readme/README_hrv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/readme/README_popularity.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/readme/README_popularity.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/readme/README_rsp.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/readme/README_rsp.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/readme/README_signalprocessing.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/readme/README_signalprocessing.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/readme/README_simulation.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/readme/README_simulation.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resources/software.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/resources/software.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/start/learn_python.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/start/learn_python.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/bio/bio_analyze.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/bio/bio_analyze.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/bio/bio_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/bio/bio_process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/complexity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/complexity/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/complexity/complexity_delay.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/complexity/complexity_delay.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/complexity/complexity_dimension.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/complexity/complexity_dimension.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/complexity/complexity_embedding.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/complexity/complexity_embedding.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/complexity/complexity_optimize.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/complexity/complexity_optimize.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/complexity/complexity_r.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/complexity/complexity_r.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/complexity/complexity_simulate.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/complexity/complexity_simulate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/complexity/entropy_approximate.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/complexity/entropy_approximate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/complexity/entropy_fuzzy.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/complexity/entropy_fuzzy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/complexity/entropy_multiscale.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/complexity/entropy_multiscale.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/complexity/entropy_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/complexity/entropy_sample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/complexity/entropy_shannon.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/complexity/entropy_shannon.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/complexity/fractal_correlation.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/complexity/fractal_correlation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/complexity/fractal_dfa.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/complexity/fractal_dfa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/complexity/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/complexity/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/data/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/data/data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ecg/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ecg/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ecg/ecg_analyze.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ecg/ecg_analyze.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ecg/ecg_clean.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ecg/ecg_clean.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ecg/ecg_delineate.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ecg/ecg_delineate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ecg/ecg_eventrelated.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ecg/ecg_eventrelated.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ecg/ecg_findpeaks.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ecg/ecg_findpeaks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ecg/ecg_intervalrelated.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ecg/ecg_intervalrelated.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ecg/ecg_peaks.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ecg/ecg_peaks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ecg/ecg_phase.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ecg/ecg_phase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ecg/ecg_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ecg/ecg_plot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ecg/ecg_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ecg/ecg_process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ecg/ecg_quality.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ecg/ecg_quality.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ecg/ecg_rsa.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/hrv/hrv_rsa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ecg/ecg_rsp.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ecg/ecg_rsp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ecg/ecg_segment.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ecg/ecg_segment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ecg/ecg_simulate.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ecg/ecg_simulate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/eda/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/eda/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/eda/eda_analyze.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/eda/eda_analyze.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/eda/eda_autocor.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/eda/eda_autocor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/eda/eda_changepoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/eda/eda_changepoints.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/eda/eda_clean.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/eda/eda_clean.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/eda/eda_eventrelated.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/eda/eda_eventrelated.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/eda/eda_findpeaks.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/eda/eda_findpeaks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/eda/eda_fixpeaks.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/eda/eda_fixpeaks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/eda/eda_intervalrelated.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/eda/eda_intervalrelated.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/eda/eda_peaks.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/eda/eda_peaks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/eda/eda_phasic.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/eda/eda_phasic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/eda/eda_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/eda/eda_process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/eeg/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/eeg/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/eeg/mne_channel_add.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/eeg/mne_channel_add.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/eeg/mne_channel_extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/eeg/mne_channel_extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/emg/emg_activation.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/emg/emg_activation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/emg/emg_amplitude.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/emg/emg_amplitude.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/emg/emg_analyze.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/emg/emg_analyze.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/emg/emg_clean.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/emg/emg_clean.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/emg/emg_eventrelated.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/emg/emg_eventrelated.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/emg/emg_intervalrelated.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/emg/emg_intervalrelated.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/emg/emg_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/emg/emg_plot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/emg/emg_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/emg/emg_process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/epochs/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/epochs/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/epochs/eventrelated_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/epochs/eventrelated_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/events/events_find.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/events/events_find.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/hrv/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/hrv/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/hrv/hrv.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/hrv/hrv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/hrv/hrv_frequency.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/hrv/hrv_frequency.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/hrv/hrv_nonlinear.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/hrv/hrv_nonlinear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/hrv/hrv_time.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/hrv/hrv_time.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/hrv/hrv_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/hrv/hrv_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/misc/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/misc/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/misc/find_closest.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/misc/find_closest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/misc/type_converters.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/misc/type_converters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ppg/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ppg/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ppg/ppg_clean.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ppg/ppg_clean.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ppg/ppg_findpeaks.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ppg/ppg_findpeaks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/ppg/ppg_simulate.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/ppg/ppg_simulate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/rsp/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/rsp/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/rsp/rsp_amplitude.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/rsp/rsp_amplitude.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/rsp/rsp_analyze.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/rsp/rsp_analyze.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/rsp/rsp_clean.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/rsp/rsp_clean.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/rsp/rsp_eventrelated.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/rsp/rsp_eventrelated.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/rsp/rsp_findpeaks.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/rsp/rsp_findpeaks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/rsp/rsp_fixpeaks.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/rsp/rsp_fixpeaks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/rsp/rsp_intervalrelated.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/rsp/rsp_intervalrelated.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/rsp/rsp_peaks.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/rsp/rsp_peaks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/rsp/rsp_phase.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/rsp/rsp_phase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/rsp/rsp_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/rsp/rsp_process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/rsp/rsp_rrv.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/rsp/rsp_rrv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/rsp/rsp_simulate.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/rsp/rsp_simulate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_autocor.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_autocor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_binarize.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_binarize.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_changepoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_changepoints.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_decompose.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_decompose.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_detrend.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_detrend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_distort.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_distort.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_filter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_findpeaks.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_findpeaks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_fixpeaks.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_fixpeaks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_formatpeaks.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_formatpeaks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_interpolate.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_interpolate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_merge.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_merge.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_period.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_period.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_phase.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_phase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_plot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_power.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_power.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_psd.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_psd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_rate.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_rate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_resample.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_resample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_simulate.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_simulate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_smooth.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_smooth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_synchrony.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_synchrony.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/signal/signal_zerocrossings.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/signal/signal_zerocrossings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/stats/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/stats/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/stats/correlation.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/stats/correlation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/stats/density.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/stats/density.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/stats/distance.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/stats/distance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/stats/fit_error.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/stats/fit_error.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/stats/fit_loess.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/stats/fit_loess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/stats/fit_mixture.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/stats/fit_mixture.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/stats/fit_polynomial.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/stats/fit_polynomial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/stats/hdi.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/stats/hdi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/stats/mad.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/stats/mad.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/stats/mutual_information.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/stats/mutual_information.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/stats/rescale.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/stats/rescale.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neurokit2/stats/standardize.py" beforeDir="false" afterPath="$PROJECT_DIR$/neurokit2/stats/standardize.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paper/bibliography.bib" beforeDir="false" afterPath="$PROJECT_DIR$/paper/bibliography.bib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paper/figures/features.png" beforeDir="false" afterPath="$PROJECT_DIR$/paper/figures/features.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paper/make_figures.Rmd" beforeDir="false" afterPath="$PROJECT_DIR$/paper/make_figures.Rmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paper/manuscript_v3.Rmd" beforeDir="false" afterPath="$PROJECT_DIR$/paper/manuscript_v3.Rmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paper/manuscript_v3.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/paper/manuscript_v3.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pytest.ini" beforeDir="false" afterPath="$PROJECT_DIR$/pytest.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/EMG_segmentation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/EMG_segmentation.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/WIP_ecgsynth.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/ecg_demo.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/ecg_segmentation_algorithm/data_generation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/eeg_microstates.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/eeg_microstates.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/resampling.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/studies/resampling/resampling.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/rsp_defaults.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/study_preprocessing_parameters/README.Rmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/study_preprocessing_parameters/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/study_preprocessing_parameters/data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/study_preprocessing_parameters/data_DetrendingOrder.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/study_preprocessing_parameters/data_RSP_filtering.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/study_preprocessing_parameters/data_simulation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/study_preprocessing_parameters/figures/unnamed-chunk-3-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/study_preprocessing_parameters/figures/unnamed-chunk-5-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/study_preprocessing_parameters/figures/unnamed-chunk-8-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_bio.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_bio.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_complexity.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_complexity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_ecg.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_ecg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_ecg_delineate.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_ecg_delineate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_eda.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_eda.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_eeg.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_eeg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_emg.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_emg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_events.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_events.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_hrv.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_hrv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_ppg.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_ppg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_rsp.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_rsp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_signal.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_signal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_signal_fixpeaks.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_signal_fixpeaks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_stats.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_stats.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tox.ini" beforeDir="false" afterPath="$PROJECT_DIR$/tox.ini" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,12 +379,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JupyterTrust" id="3c64befa-dfb7-4b06-bc00-3016b7c13d23" />
+  <component name="JupyterTrust" id="09d37cbf-01c1-4cf8-aeb5-a8c86e73cb6c" />
   <component name="ProjectId" id="1V0QjaAQyYwYx9F0zjeGHi2P6qI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -62,18 +416,7 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -87,11 +430,15 @@
       <workItem from="1576387677929" duration="1147000" />
       <workItem from="1576465425012" duration="255000" />
       <workItem from="1576573439935" duration="81000" />
+      <workItem from="1604009020614" duration="572000" />
+      <workItem from="1604010786823" duration="2159000" />
+      <workItem from="1604156776572" duration="640000" />
+      <workItem from="1604703653123" duration="395000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576465541167">

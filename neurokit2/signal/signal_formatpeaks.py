@@ -4,17 +4,16 @@ import pandas as pd
 
 
 def signal_formatpeaks(info, desired_length, peak_indices=None):
-    """Transforms an peak-info dict to a signal of given length.
-    """
+    """Transforms an peak-info dict to a signal of given length."""
     if peak_indices is None:
         peak_indices = [key for key in info.keys() if "Peaks" in key]
 
     signals = {}
-    for feature in info.keys():
+    for feature, values in info.items():
         if any(x in str(feature) for x in ["Peak", "Onset", "Offset", "Trough", "Recovery"]):
-            signals[feature] = _signal_from_indices(info[feature], desired_length, 1)
+            signals[feature] = _signal_from_indices(values, desired_length, 1)
         else:
-            signals[feature] = _signal_from_indices(peak_indices, desired_length, info[feature])
+            signals[feature] = _signal_from_indices(peak_indices, desired_length, values)
     signals = pd.DataFrame(signals)
     return signals
 
@@ -30,7 +29,12 @@ def _signal_from_indices(indices, desired_length=None, value=1):
     Used in *_findpeaks to transform vectors of peak indices to signal.
 
     """
-    signal = np.zeros(desired_length)
+    signal = np.zeros(desired_length, dtype=np.int)
+
+    if isinstance(indices, list) and (not indices):    # skip empty lists
+        return signal
+    if isinstance(indices, np.ndarray) and (indices.size == 0):    # skip empty arrays
+        return signal
 
     # Force indices as int
     if isinstance(indices[0], np.float):
@@ -48,7 +52,7 @@ def _signal_from_indices(indices, desired_length=None, value=1):
     return signal
 
 
-def _signal_formatpeaks_sanitize(peaks, desired_length=None, key="Peaks"):
+def _signal_formatpeaks_sanitize(peaks, key="Peaks"):    # FIXME: private function not used in this module
     # Attempt to retrieve column.
     if isinstance(peaks, tuple):
         if isinstance(peaks[0], (dict, pd.DataFrame)):
@@ -67,8 +71,6 @@ def _signal_formatpeaks_sanitize(peaks, desired_length=None, key="Peaks"):
             )
         peaks_signal = peaks[col[0]].values
         peaks = np.where(peaks_signal == 1)[0]
-        if desired_length is None:
-            desired_length = len(peaks_signal)
 
     if isinstance(peaks, dict):
         col = [col for col in list(peaks.keys()) if key in col]
@@ -85,13 +87,4 @@ def _signal_formatpeaks_sanitize(peaks, desired_length=None, key="Peaks"):
     except TypeError:
         peaks = np.array([peaks])
 
-    if desired_length is None:
-        desired_length = len(peaks)
-
-    if desired_length < len(peaks):
-        raise ValueError(
-            "NeuroKit error: _signal_formatpeaks(): 'desired_length' cannot",
-            " be lower than the length of the signal. Please input a greater 'desired_length'.",
-        )
-
-    return peaks, desired_length
+    return peaks

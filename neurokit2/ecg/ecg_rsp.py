@@ -30,13 +30,13 @@ def ecg_rsp(ecg_rate, sampling_rate=1000, method="vangent2019"):
     >>> # Get heart rate
     >>> data = nk.data("bio_eventrelated_100hz")
     >>> rpeaks, info = nk.ecg_peaks(data["ECG"], sampling_rate=100)
-    >>> ecg_rate = nk.signal_rate(rpeaks, sampling_rate=100)
+    >>> ecg_rate = nk.signal_rate(rpeaks, sampling_rate=100, desired_length=len(rpeaks))
     >>>
     >>>
     >>> # Get ECG Derived Respiration (EDR)
     >>> edr = nk.ecg_rsp(ecg_rate, sampling_rate=100)
     >>> nk.standardize(pd.DataFrame({"EDR": edr, "RSP": data["RSP"]})).plot() #doctest: +ELLIPSIS
-    <matplotlib.axes._subplots.AxesSubplot object at ...>
+    <AxesSubplot:>
     >>>
     >>> # Method comparison (the closer to 0 the better)
     >>> nk.standardize(pd.DataFrame({"True RSP": data["RSP"],
@@ -45,7 +45,7 @@ def ecg_rsp(ecg_rate, sampling_rate=1000, method="vangent2019"):
     ...                              "charlton2016": nk.ecg_rsp(ecg_rate, sampling_rate=100, method="charlton2016"),
     ...                              "soni2019": nk.ecg_rsp(ecg_rate, sampling_rate=100,
     ...                                                     method="soni2019")})).plot() #doctest: +ELLIPSIS
-    <matplotlib.axes._subplots.AxesSubplot object at ...>
+    <AxesSubplot:>
 
     References
     ----------

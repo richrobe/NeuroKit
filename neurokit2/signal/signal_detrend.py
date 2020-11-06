@@ -14,7 +14,7 @@ def signal_detrend(signal, method="polynomial", order=1, regularization=500, alp
 
     Parameters
     ----------
-    signal : list or array or Series
+    signal : Union[list, np.array, pd.Series]
         The signal (i.e., a time series) in the form of a vector of values.
     method : str
         Can be one of 'polynomial' (default; traditional detrending of a given order) or 'tarvainen2002'
@@ -33,12 +33,9 @@ def signal_detrend(signal, method="polynomial", order=1, regularization=500, alp
     window : float
         Only used if `method` is 'locreg'. The detrending 'window' should correspond to the desired low
         frequency band to remove multiplied by the sampling rate (for instance, ``1.5*1000`` will remove
-        frequencies below 1.5Hz for a signal sampled at 1000Hz). The 'stepsize' should also be multiplied
-        by the sampling rate.
+        frequencies below 1.5Hz for a signal sampled at 1000Hz).
     stepsize : float
-        Only used if `method` is 'locreg'. The detrending 'window' should correspond to the desired low
-        frequency band to remove multiplied by the sampling rate (for instance, ``1.5*1000`` will remove
-        frequencies below 1.5Hz for a signal sampled at 1000Hz). The 'stepsize' should also be multiplied
+        Only used if `method` is 'locreg'. Simialrly to 'window', 'stepsize' should also be multiplied
         by the sampling rate.
 
 

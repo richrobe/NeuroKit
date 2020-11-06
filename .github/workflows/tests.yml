@@ -1,7 +1,12 @@
 name: 📊 Tests
 
 # on: [push, pull_request]
-on: pull_request
+on:
+  # Trigger the workflow on push to master branch or pull request
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   build:
@@ -35,4 +40,7 @@ jobs:
     - name: Test with tox
       run: |
         cd $GITHUB_WORKSPACE && python -m tox -e py
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
   

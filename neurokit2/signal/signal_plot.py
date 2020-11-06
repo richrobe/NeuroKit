@@ -7,7 +7,7 @@ from ..events import events_plot
 from ..stats import standardize as nk_standardize
 
 
-def signal_plot(signal, sampling_rate=None, subplots=False, standardize=False, **kwargs):
+def signal_plot(signal, sampling_rate=None, subplots=False, standardize=False, labels=None, **kwargs):
     """Plot signal with events as vertical lines.
 
     Parameters
@@ -22,6 +22,8 @@ def signal_plot(signal, sampling_rate=None, subplots=False, standardize=False, *
         If True, each signal is plotted in a subplot.
     standardize : bool
         If True, all signals will have the same scale (useful for visualisation).
+    labels : str or list
+        Defaults to None.
     **kwargs : optional
         Arguments passed to matplotlib plotting.
 
@@ -37,7 +39,7 @@ def signal_plot(signal, sampling_rate=None, subplots=False, standardize=False, *
     >>> data = pd.DataFrame({"Signal2": np.cos(np.linspace(start=0, stop=20, num=1000)),
     ...                      "Signal3": np.sin(np.linspace(start=0, stop=20, num=1000)),
     ...                      "Signal4": nk.signal_binarize(np.cos(np.linspace(start=0, stop=40, num=1000)))})
-    >>> nk.signal_plot(data, subplots=True)
+    >>> nk.signal_plot(data, labels=['signal_1', 'signal_2', 'signal_3'], subplots=True)
     >>> nk.signal_plot([signal, data], standardize=True)
 
     """
@@ -65,6 +67,9 @@ def signal_plot(signal, sampling_rate=None, subplots=False, standardize=False, *
         else:
             signal = pd.DataFrame({"Signal": signal})
 
+    # Copy signal
+    signal = signal.copy()
+
     # Guess continuous and events columns
     continuous_columns = list(signal.columns.values)
     events_columns = []
@@ -78,15 +83,11 @@ def signal_plot(signal, sampling_rate=None, subplots=False, standardize=False, *
 
     # Adjust for sampling rate
     if sampling_rate is not None:
-        x_axis = np.linspace(0, signal.shape[0] / sampling_rate, signal.shape[0])
-        x_axis = pd.DataFrame(x_axis, columns=["Time (s)"])
-        signal = pd.concat([signal, x_axis], axis=1)
-        signal = signal.set_index("Time (s)")
-    elif sampling_rate is None:
-        x_axis = np.arange(0, signal.shape[0])
-        x_axis = pd.DataFrame(x_axis, columns=["Samples"])
-        signal = pd.concat([signal, x_axis], axis=1)
-        signal = signal.set_index("Samples")
+        signal.index = signal.index / sampling_rate
+    #        x_axis = np.linspace(0, signal.shape[0] / sampling_rate, signal.shape[0])
+    #        x_axis = pd.DataFrame(x_axis, columns=["Time (s)"])
+    #        signal = pd.concat([signal, x_axis], axis=1)
+    #        signal = signal.set_index("Time (s)")
 
     # Plot accordingly
     if len(events_columns) > 0:
@@ -95,15 +96,53 @@ def signal_plot(signal, sampling_rate=None, subplots=False, standardize=False, *
             vector = signal[col]
             events.append(np.where(vector == np.max(vector.unique()))[0])
         plot = events_plot(events, signal=signal[continuous_columns])
-        if sampling_rate is not None:
-            plot.gca().set_xlabel("Time (seconds)")
-        elif sampling_rate is None:
-            plot.gca().set_xlabel("Samples")
-    else:
-        if standardize is True:
-            plot = nk_standardize(signal[continuous_columns]).plot(subplots=subplots, sharex=True, **kwargs)
-        else:
-            plot = signal[continuous_columns].plot(subplots=subplots, sharex=True, **kwargs)
 
-    # Tidy legend locations
-    [plot.legend(loc=1) for plot in plt.gcf().axes]  # pylint: disable=W0106
+        if sampling_rate is None:
+            plot.gca().set_xlabel("Samples")
+        else:
+            plot.gca().set_xlabel("Time (seconds)")
+
+    else:
+
+        # Aesthetics
+        colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd',
+                  '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']
+        if len(continuous_columns) > len(colors):
+            colors = plt.cm.viridis(np.linspace(0, 1, len(continuous_columns)))
+
+        # Plot
+        if standardize is True:
+            signal[continuous_columns] = nk_standardize(signal[continuous_columns])
+
+        if subplots is True:
+            fig, axes = plt.subplots(nrows=len(continuous_columns), ncols=1, sharex=True, **kwargs)
+            for ax, col, color in zip(axes, continuous_columns, colors):
+                ax.plot(signal[col], c=color, **kwargs)
+        else:
+            plot = signal[continuous_columns].plot(subplots=False, sharex=True, **kwargs)
+
+        if sampling_rate is None:
+            plt.xlabel("Samples")
+        else:
+            plt.xlabel("Time (seconds)")
+
+    # Tidy legend locations and add labels
+    if labels is None:
+        labels = continuous_columns.copy()
+
+    if isinstance(labels, str):
+        n_labels = len([labels])
+        labels = [labels]
+    elif isinstance(labels, list):
+        n_labels = len(labels)
+
+    if len(signal[continuous_columns].columns) != n_labels:
+        raise ValueError(
+            "NeuroKit error: signal_plot(): number of labels does not equal the number of plotted signals."
+        )
+
+    if subplots is False:
+        plt.legend(labels, loc=1)
+    else:
+        for i, label in enumerate(labels):
+            axes[i].legend([label], loc=1)

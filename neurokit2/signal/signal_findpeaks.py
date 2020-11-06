@@ -24,25 +24,25 @@ def signal_findpeaks(
 
     Parameters
     ----------
-    signal : list or array or Series
+    signal : Union[list, np.array, pd.Series]
         The signal (i.e., a time series) in the form of a vector of values.
     height_min : float
-        The minimum height (i.e., amplitude in terms of absolute values). For example,`height_min=20`
+        The minimum height (i.e., amplitude in terms of absolute values). For example,``height_min=20``
         will remove all peaks which height is smaller or equal to 20 (in the provided signal's values).
     height_max : float
         The maximum height (i.e., amplitude in terms of absolute values).
     relative_height_min : float
         The minimum height (i.e., amplitude) relative to the sample (see below). For example,
-        `relative_height_min=-2.96` will remove all peaks which height lies below 2.96 standard deviations
-        from the mean of the heights.
+        ``relative_height_min=-2.96`` will remove all peaks which height lies below 2.96 standard
+        deviations from the mean of the heights.
     relative_height_max : float
         The maximum height (i.e., amplitude) relative to the sample (see below).
     relative_mean : bool
         If a relative threshold is specified, how should it be computed (i.e., relative to what?).
-        `relative_mean=True` will use Z-scores.
+        ``relative_mean=True`` will use Z-scores.
     relative_median : bool
         If a relative threshold is specified, how should it be computed (i.e., relative to what?).
-        Relative to median uses a more robust form of standardization (see `standardize`).
+        Relative to median uses a more robust form of standardization (see ``standardize()``).
     relative_max : bool
         If a relative threshold is specified, how should it be computed (i.e., relative to what?).
         Reelative to max will consider the maximum height as the reference.
@@ -198,8 +198,8 @@ def _signal_findpeaks_scipy(signal):
 
     # Get info
     distances = _signal_findpeaks_distances(peaks)
-    heights, __, __ = scipy.signal.peak_prominences(signal, peaks)
-    widths, __, __, __ = scipy.signal.peak_widths(signal, peaks, rel_height=0.5)
+    heights, _, __ = scipy.signal.peak_prominences(signal, peaks)
+    widths, _, __, ___ = scipy.signal.peak_widths(signal, peaks, rel_height=0.5)
 
     # Prepare output
     info = {"Peaks": peaks, "Distance": distances, "Height": heights, "Width": widths}

@@ -2,12 +2,12 @@
 import numpy as np
 
 
-def mad(x, constant=1.4826):
+def mad(x, constant=1.4826, **kwargs):
     """Median Absolute Deviation: a "robust" version of standard deviation.
 
     Parameters
     ----------
-    x : list, array or Series
+    x : Union[list, np.array, pd.Series]
         A vector of values.
     constant : float
         Scale factor. Use 1.4826 for results similar to default R.
@@ -28,7 +28,7 @@ def mad(x, constant=1.4826):
     - https://en.wikipedia.org/wiki/Median_absolute_deviation
 
     """
-    median = np.nanmedian(np.ma.array(x).compressed())
-    mad_value = np.nanmedian(np.abs(x - median))
+    median = np.nanmedian(np.ma.array(x).compressed(), **kwargs)
+    mad_value = np.nanmedian(np.abs(x - median), **kwargs)
     mad_value = mad_value * constant
     return mad_value

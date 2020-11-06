@@ -16,7 +16,7 @@ def ecg_findpeaks(ecg_cleaned, sampling_rate=1000, method="neurokit", show=False
 
     Parameters
     ----------
-    ecg_cleaned : list or array or Series
+    ecg_cleaned : Union[list, np.array, pd.Series]
         The cleaned ECG channel as returned by `ecg_clean()`.
     sampling_rate : int
         The sampling frequency of `ecg_signal` (in Hz, i.e., samples/second).
@@ -56,18 +56,20 @@ def ecg_findpeaks(ecg_cleaned, sampling_rate=1000, method="neurokit", show=False
     >>> # Different methods
     >>> neurokit = nk.ecg_findpeaks(nk.ecg_clean(ecg, method="neurokit"), method="neurokit")
     >>> pantompkins1985 = nk.ecg_findpeaks(nk.ecg_clean(ecg, method="pantompkins1985"), method="pantompkins1985")
+    >>> nabian2018 = nk.ecg_findpeaks(cleaned, method="nabian2018")
     >>> hamilton2002 = nk.ecg_findpeaks(nk.ecg_clean(ecg, method="hamilton2002"), method="hamilton2002")
+    >>> martinez2003 = nk.ecg_findpeaks(cleaned, method="martinez2003")
     >>> christov2004 = nk.ecg_findpeaks(cleaned, method="christov2004")
     >>> gamboa2008 = nk.ecg_findpeaks(nk.ecg_clean(ecg, method="gamboa2008"), method="gamboa2008")
     >>> elgendi2010 = nk.ecg_findpeaks(nk.ecg_clean(ecg, method="elgendi2010"), method="elgendi2010")
     >>> engzeemod2012 = nk.ecg_findpeaks(nk.ecg_clean(ecg, method="engzeemod2012"), method="engzeemod2012")
     >>> kalidas2017 = nk.ecg_findpeaks(nk.ecg_clean(ecg, method="kalidas2017"), method="kalidas2017")
-    >>> martinez2003 = nk.ecg_findpeaks(cleaned, method="martinez2003")
     >>> rodrigues2020 = nk.ecg_findpeaks(cleaned, method="rodrigues2020")
     >>>
     >>> # Visualize
     >>> nk.events_plot([neurokit["ECG_R_Peaks"],
     ...                       pantompkins1985["ECG_R_Peaks"],
+    ...                       nabian2018["ECG_R_Peaks"],
     ...                       hamilton2002["ECG_R_Peaks"],
     ...                       christov2004["ECG_R_Peaks"],
     ...                       gamboa2008["ECG_R_Peaks"],
@@ -106,6 +108,10 @@ def ecg_findpeaks(ecg_cleaned, sampling_rate=1000, method="neurokit", show=False
     - Lourenço, A., Silva, H., Leite, P., Lourenço, R., & Fred, A. L. (2012, February). Real Time
       Electrocardiogram Segmentation for Finger based ECG Biometrics. In Biosignals (pp. 49-54).
 
+    - Nabian, M., Yin, Y., Wormwood, J., Quigley, K. S., Barrett, L. F., &amp; Ostadabbas, S. (2018).
+      An Open-Source Feature Extraction Tool for the Analysis of Peripheral Physiological Data.
+      IEEE Journal of Translational Engineering in Health and Medicine, 6, 1-11. doi:10.1109/jtehm.2018.2878000
+
     """
     # Try retrieving right column
     if isinstance(ecg_cleaned, pd.DataFrame):
@@ -123,6 +129,8 @@ def ecg_findpeaks(ecg_cleaned, sampling_rate=1000, method="neurokit", show=False
         rpeaks = _ecg_findpeaks_neurokit(ecg_cleaned, sampling_rate, show=show)
     elif method in ["pantompkins", "pantompkins1985"]:
         rpeaks = _ecg_findpeaks_pantompkins(ecg_cleaned, sampling_rate)
+    elif method in ["nabian", "nabian2018"]:
+        rpeaks = _ecg_findpeaks_nabian2018(ecg_cleaned, sampling_rate)
     elif method in ["gamboa2008", "gamboa"]:
         rpeaks = _ecg_findpeaks_gamboa(ecg_cleaned, sampling_rate)
     elif method in ["ssf", "slopesumfunction", "zong", "zong2003"]:
@@ -160,10 +168,8 @@ def _ecg_findpeaks_promac(signal, sampling_rate=1000, threshold=0.33, show=False
     x = np.zeros(len(signal))
 
     x = _ecg_findpeaks_promac_addmethod(signal, sampling_rate, x, _ecg_findpeaks_neurokit, **kwargs)
-    x = _ecg_findpeaks_promac_addmethod(signal, sampling_rate, x, _ecg_findpeaks_pantompkins, **kwargs)
     x = _ecg_findpeaks_promac_addmethod(signal, sampling_rate, x, _ecg_findpeaks_gamboa, **kwargs)
     x = _ecg_findpeaks_promac_addmethod(signal, sampling_rate, x, _ecg_findpeaks_ssf, **kwargs)
-    x = _ecg_findpeaks_promac_addmethod(signal, sampling_rate, x, _ecg_findpeaks_christov, **kwargs)
     x = _ecg_findpeaks_promac_addmethod(signal, sampling_rate, x, _ecg_findpeaks_engzee, **kwargs)
     x = _ecg_findpeaks_promac_addmethod(signal, sampling_rate, x, _ecg_findpeaks_elgendi, **kwargs)
     x = _ecg_findpeaks_promac_addmethod(signal, sampling_rate, x, _ecg_findpeaks_kalidas, **kwargs)
@@ -307,6 +313,36 @@ def _ecg_findpeaks_pantompkins(signal, sampling_rate=1000):
     mwa_peaks = np.array(mwa_peaks, dtype="int")
     return mwa_peaks
 
+
+# ===========================================================================
+# Nabian et al. (2018)
+# ===========================================================================
+def _ecg_findpeaks_nabian2018(signal, sampling_rate=1000):
+    """R peak detection method by Nabian et al. (2018) inspired by the Pan-Tompkins
+    algorithm.
+
+    - Nabian, M., Yin, Y., Wormwood, J., Quigley, K. S., Barrett, L. F., &amp; Ostadabbas, S. (2018).
+    An Open-Source Feature Extraction Tool for the Analysis of Peripheral Physiological Data.
+    IEEE Journal of Translational Engineering in Health and Medicine, 6, 1-11.
+    doi:10.1109/jtehm.2018.2878000
+
+    """
+    window_size = int(0.4 * sampling_rate)
+
+    peaks = np.zeros(len(signal))
+
+    for i in range(1+window_size, len(signal)-window_size):
+        ecg_window = signal[i-window_size:i+window_size]
+        rpeak = np.argmax(ecg_window)
+
+        if i == (i-window_size-1+rpeak):
+            peaks[i] = 1
+
+    rpeaks = np.where(peaks == 1)[0]
+
+    # min_distance = 200
+
+    return rpeaks
 
 # =============================================================================
 # Hamilton (2002)
@@ -963,8 +999,7 @@ def _ecg_findpeaks_rodrigues(signal, sampling_rate=1000):
 
 
 def _ecg_findpeaks_MWA(signal, window_size):
-    """From https://github.com/berndporr/py-ecg-detectors/
-    """
+    """From https://github.com/berndporr/py-ecg-detectors/"""
 
     mwa = np.zeros(len(signal))
     sums = np.cumsum(signal)
@@ -991,8 +1026,7 @@ def _ecg_findpeaks_MWA(signal, window_size):
 
 
 def _ecg_findpeaks_peakdetect(detection, sampling_rate=1000):
-    """From https://github.com/berndporr/py-ecg-detectors/
-    """
+    """From https://github.com/berndporr/py-ecg-detectors/"""
     min_distance = int(0.25 * sampling_rate)
 
     signal_peaks = [0]

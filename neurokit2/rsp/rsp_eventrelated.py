@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from warnings import warn
+
 import numpy as np
 
 from ..epochs.eventrelated_utils import (
@@ -7,6 +9,7 @@ from ..epochs.eventrelated_utils import (
     _eventrelated_sanitizeinput,
     _eventrelated_sanitizeoutput,
 )
+from ..misc import NeuroKitWarning
 
 
 def rsp_eventrelated(epochs, silent=False):
@@ -14,7 +17,7 @@ def rsp_eventrelated(epochs, silent=False):
 
     Parameters
     ----------
-    epochs : dict, DataFrame
+    epochs : Union[dict, pd.DataFrame]
         A dict containing one DataFrame per event/trial, usually obtained via `epochs_create()`,
         or a DataFrame containing all epochs, usually obtained via `epochs_to_df()`.
     silent : bool
@@ -104,11 +107,11 @@ def rsp_eventrelated(epochs, silent=False):
 def _rsp_eventrelated_amplitude(epoch, output={}):
 
     # Sanitize input
-    colnames = epoch.columns.values
-    if len([i for i in colnames if "RSP_Amplitude" in i]) == 0:
-        print(
-            "NeuroKit warning: rsp_eventrelated(): input does not"
-            "have an `RSP_Amplitude` column. Will skip all amplitude-related features."
+    if "RSP_Amplitude" not in epoch:
+        warn(
+            "Input does not have an `RSP_Amplitude` column."
+            " Will skip all amplitude-related features.",
+            category=NeuroKitWarning
         )
         return output
 
@@ -131,12 +134,11 @@ def _rsp_eventrelated_amplitude(epoch, output={}):
 def _rsp_eventrelated_inspiration(epoch, output={}):
 
     # Sanitize input
-    colnames = epoch.columns.values
-    if len([i for i in colnames if "RSP_Phase" in i]) == 0:
-        print(
-            "NeuroKit warning: rsp_eventrelated(): input does not"
-            "have an `RSP_Phase` column. Will not indicate whether"
-            "event onset concurs with inspiration."
+    if "RSP_Phase" not in epoch:
+        warn(
+            "Input does not have an `RSP_Phase` column."
+            " Will not indicate whether event onset concurs with inspiration.",
+            category=NeuroKitWarning
         )
         return output
 

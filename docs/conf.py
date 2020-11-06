@@ -21,19 +21,23 @@
 import os
 import re
 import sys
-
 import mock
+from m2r import MdInclude
+from recommonmark.transform import AutoStructify
+
 
 sys.path.insert(0, os.path.abspath('../'))
 
 
+# -- Mock modules ---------------------------------------------
 MOCK_MODULES = ['scipy', 'scipy.signal', 'scipy.ndimage', 'scipy.stats', 'scipy.misc', 'scipy.interpolate', 'scipy.sparse', 'scipy.linalg',
-                'scipy.spatial', 'scipy.special', 'scipy.integrate',
-                'sklearn', 'sklearn.neighbors', 'sklearn.mixture', 'sklearn.datasets', 'sklearn.metrics', 'sklearn.metrics.pairwise',
-                'mne', 'bioread', 'cvxopt', 'pywt']
+                'scipy.spatial', 'scipy.special', 'scipy.integrate', 'scipy.cluster', 'scipy.optimize',
+                'sklearn', 'sklearn.neighbors', 'sklearn.mixture', 'sklearn.datasets', 'sklearn.metrics', 'sklearn.metrics.pairwise', 'sklearn.decomposition',
+                'sklearn.cluster', 'sklearn.cross_validation', 'mne', 'bioread', 'cvxopt', 'pywt']
 
 for mod_name in MOCK_MODULES:
     sys.modules[mod_name] = mock.Mock()
+
 
 
 
@@ -58,7 +62,9 @@ extensions = [
     'sphinx_rtd_theme',
     'nbsphinx',
     'sphinx_nbexamples',
-    'matplotlib.sphinxext.plot_directive'
+    'matplotlib.sphinxext.plot_directive',
+    'sphinx_copybutton',
+    'recommonmark'
 ]
 
 # matplotlib plot directive
@@ -88,9 +94,8 @@ templates_path = ['_templates']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
-#
-# source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+source_suffix = ['.rst', '.md']
+
 
 # The master toctree document.
 master_doc = 'index'
@@ -258,3 +263,21 @@ texinfo_documents = [
 # Other
 add_module_names = False  # so functions aren’t prepended with the name of the package/module
 add_function_parentheses = True  # to ensure that parentheses are added to the end of all function names
+
+
+# -- Setup for recommonmark ---------------------------------------------
+def setup(app):
+    # Use m2r only for mdinclude and recommonmark for everything else
+    # https://github.com/readthedocs/recommonmark/issues/191#issuecomment-622369992
+    app.add_config_value('recommonmark_config', {
+            # 'url_resolver': lambda url: github_doc_root + url,
+            'auto_toc_tree_section': 'Contents',
+            }, True)
+    app.add_transform(AutoStructify)
+
+    # from m2r to make `mdinclude` work
+    app.add_config_value('no_underscore_emphasis', False, 'env')
+    app.add_config_value('m2r_parse_relative_links', False, 'env')
+    app.add_config_value('m2r_anonymous_references', False, 'env')
+    app.add_config_value('m2r_disable_inline_math', False, 'env')
+    app.add_directive('mdinclude', MdInclude)

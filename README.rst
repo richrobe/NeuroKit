@@ -65,7 +65,7 @@ Contributing
         :target: https://github.com/neuropsychology/NeuroKit/blob/master/LICENSE
         :alt: License
         
-.. image:: https://github.com/neuropsychology/neurokit/workflows/Tests/badge.svg
+.. image:: https://github.com/neuropsychology/neurokit/workflows/%E2%9C%A8%20Style/badge.svg?branch=master
         :target: https://github.com/neuropsychology/NeuroKit/actions
         :alt: GitHub CI
         
@@ -73,7 +73,7 @@ Contributing
         :target: https://github.com/psf/black
         :alt: Black code
 
-NeuroKit2 is a collaborative project with a community of contributors with all levels of development expertise. Thus, if you have some ideas for **improvement**, **new features**, or just want to **learn Python** and do something useful at the same time, do not hesitate and check out the following guides:
+NeuroKit2 is the most `welcoming <https://github.com/neuropsychology/NeuroKit#popularity>`_ project with a large community of contributors with all levels of programming expertise. **But the package is still far from being perfect!** Thus, if you have some ideas for **improvement**, **new features**, or just want to **learn Python** and do something useful at the same time, do not hesitate and check out the following guides:
 
 - `Understanding NeuroKit <https://neurokit2.readthedocs.io/en/latest/contributing/understanding.html>`_
 - `Contributing guide <https://neurokit2.readthedocs.io/en/latest/contributing/contributing.html>`_
@@ -132,7 +132,9 @@ Examples
 -  `Analyze Respiratory Rate Variability (RRV) <https://neurokit2.readthedocs.io/en/latest/examples/rrv.html>`_
 -  `Extract and Visualize Individual Heartbeats <https://neurokit2.readthedocs.io/en/latest/examples/heartbeats.html>`_
 -  `Locate P, Q, S and T waves in ECG <https://neurokit2.readthedocs.io/en/latest/examples/ecg_delineate.html>`_
--  `Complexity Analysis of Physiological Signals <https://neurokit2.readthedocs.io/en/latest/tutorials/complexity.html>`_
+-  `Complexity Analysis of Physiological Signals <https://neurokit2.readthedocs.io/en/latest/examples/complexity.html>`_
+-  `Analyze Electrooculography EOG data <https://neurokit2.readthedocs.io/en/latest/examples/eog.html>`_
+-  `Fit a function to a signal <https://neurokit2.readthedocs.io/en/latest/examples/fit_function.html>`_
 
 *You can try out these examples directly* `in your browser <https://github.com/neuropsychology/NeuroKit/tree/master/docs/examples#cloud-based-interactive-examples>`_.
 
@@ -301,6 +303,33 @@ Photoplethysmography (PPG/BVP)
     # Generate 15 seconds of PPG signal (recorded at 250 samples / second)
     ppg = nk.ppg_simulate(duration=15, sampling_rate=250, heart_rate=70)
 
+    # Process it
+    signals, info = nk.ppg_process(ppg, sampling_rate=250)
+
+    # Visualize the processing
+    nk.ppg_plot(signals, sampling_rate=250)
+
+
+.. image:: https://raw.github.com/neuropsychology/NeuroKit/master/docs/readme/README_ppg.png
+
+
+Electrooculography (EOG)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+    
+    # Import EOG data
+    eog_signal = nk.data("eog_100hz")
+
+    # Process it
+    signals, info = nk.eog_process(eog_signal, sampling_rate=100)
+
+    # Plot
+    plot = nk.eog_plot(signals, sampling_rate=100)
+
+
+.. image:: https://raw.github.com/neuropsychology/NeuroKit/master/docs/readme/README_eog.png
+
 
 
 Electrogastrography (EGG)
@@ -308,11 +337,6 @@ Electrogastrography (EGG)
 
 Consider `helping us develop it <https://neurokit2.readthedocs.io/en/latest/tutorials/contributing.html>`_!
 
-
-Electrooculography (EOG)
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Consider `helping us develop it <https://neurokit2.readthedocs.io/en/latest/tutorials/contributing.html>`_!
 
 Physiological Data Analysis
 ----------------------------
@@ -353,7 +377,7 @@ event-related analysis pertains to the segments of signals within the orange box
 changes pertaining to the appearance of stimuli), interval-related analysis can be
 applied on the entire 20s duration to investigate how physiology fluctuates in general.
 In this case, using `bio_analyze()` will compute features such as rate characteristics (in particular,
-variability metrices) and peak characteristics.
+variability metrics) and peak characteristics.
 
 - `Interval-related example <https://neurokit2.readthedocs.io/en/latest/examples/intervalrelated.html>`_
 
@@ -390,6 +414,30 @@ Heart Rate Variability (HRV)
 .. image:: https://raw.github.com/neuropsychology/NeuroKit/master/docs/readme/README_hrv.png
 
 
+ECG Delineation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Delineate the QRS complex of an electrocardiac signal (ECG) including P-peaks, T-peaks, as well as their onsets and offsets.
+
+
+.. code-block:: python
+
+
+    # Download data
+    ecg_signal = nk.data(dataset="ecg_3000hz")['ECG']
+
+    # Extract R-peaks locations
+    _, rpeaks = nk.ecg_peaks(ecg_signal, sampling_rate=3000)
+
+    # Delineate
+    signal, waves = nk.ecg_delineate(ecg_signal, rpeaks, sampling_rate=3000, method="dwt", show=True, show_type='all')
+
+
+
+.. image:: https://raw.github.com/neuropsychology/NeuroKit/master/docs/readme/README_delineate.png
+       :target: https://neurokit2.readthedocs.io/en/latest/examples/ecg_delineate.html
+
+
 
 Signal Processing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -424,6 +472,7 @@ Signal Processing
 
 .. image:: https://raw.github.com/neuropsychology/NeuroKit/master/docs/readme/README_signalprocessing.png
 
+
 Complexity (Entropy, Fractal Dimensions, ...)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -456,6 +505,45 @@ Complexity (Entropy, Fractal Dimensions, ...)
     nk.entropy_approximate(signal)
 
 
+Signal Decomposition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+    # Create complex signal
+    signal = nk.signal_simulate(duration=10, frequency=1)  # High freq
+    signal += 3 * nk.signal_simulate(duration=10, frequency=3)  # Higher freq
+    signal += 3 * np.linspace(0, 2, len(signal))  # Add baseline and linear trend
+    signal += 2 * nk.signal_simulate(duration=10, frequency=0.1, noise=0)  # Non-linear trend
+    signal += np.random.normal(0, 0.02, len(signal))  # Add noise
+
+    # Decompose signal using Empirical Mode Decomposition (EMD)
+    components = nk.signal_decompose(signal, method='emd')
+    nk.signal_plot(components)  # Visualize components
+
+    # Recompose merging correlated components
+    recomposed = nk.signal_recompose(components, threshold=0.99)
+    nk.signal_plot(recomposed)  # Visualize components
+
+.. image:: https://raw.github.com/neuropsychology/NeuroKit/master/docs/readme/README_decomposition.png
+        :target: https://neurokit2.readthedocs.io/en/latest/
+
+Signal Power Spectrum Density (PSD)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: python
+
+    # Generate complex signal
+    signal = nk.signal_simulate(duration=20, frequency=[0.5, 5, 10, 15], amplitude=[2, 1.5, 0.5, 0.3], noise=0.025)
+
+    # Get the PSD using different methods
+    welch = nk.signal_psd(signal, method="welch", min_frequency=1, max_frequency=20, show=True)
+    multitaper = nk.signal_psd(signal, method="multitapers", max_frequency=20, show=True)
+    lomb = nk.signal_psd(signal, method="lomb", min_frequency=1, max_frequency=20, show=True)
+    burg = nk.signal_psd(signal, method="burg", min_frequency=1, max_frequency=20, order=10, show=True)
+
+.. image:: https://raw.github.com/neuropsychology/NeuroKit/master/docs/readme/README_psd.png
+        :target: https://neurokit2.readthedocs.io/en/latest/
+
 Statistics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -482,6 +570,8 @@ Popularity
         :target: https://github.com/neuropsychology/NeuroKit/network
 
 
+NeuroKit2 is one of the most welcoming package for new contributors and users, as well as the fastest growing package. So stop hesitating and hop onboard 🤗
+
 .. image:: https://raw.github.com/neuropsychology/NeuroKit/master/docs/readme/README_popularity.png
         :target: https://pypi.python.org/pypi/neurokit2
 
@@ -490,4 +580,4 @@ Popularity
 Notes
 -------
 
-*The authors do not provide any warranty. If this software causes your keyboard to blow up, your brain to liquify, your toilet to clog or a zombie plague to break loose, the authors CANNOT IN ANY WAY be held responsible.*
+*The authors do not provide any warranty. If this software causes your keyboard to blow up, your brain to liquefy, your toilet to clog or a zombie plague to break loose, the authors CANNOT IN ANY WAY be held responsible.*
